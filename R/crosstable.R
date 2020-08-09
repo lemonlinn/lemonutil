@@ -11,6 +11,10 @@
 #' @param x_names Vector of response options. Default value is FALSE.
 #' @param y_names Vector of response options. Default value is FALSE.
 #' @return A flextable object
+#' @examples
+#' mat <- as.data.frame(matrix(1:20, 5, 4, dimnames = list(NULL, LETTERS[1:4])))
+#' crosstable(mat, "A", "B")
+#' crosstable(mat, "A", "B", x_names = c("one", "two", "three", "four", "five"), y_names = c("six", "seven", "eight", "nine", "ten"))
 #' @export
 crosstable <- function(data, x, y, x_names = FALSE, y_names = FALSE){
   tab = xtabs(formula = ~unlist(data[y])+unlist(data[x]))

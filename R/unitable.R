@@ -7,11 +7,14 @@
 #' @param colval Call to the variable in the dataframe formatted as df$colname
 #' @param minval Integer representing the smallest possible numeric value in the variable
 #' @param maxval Integer representing the largest possible numeric value in the variable
-#' @param namecol Vector containing string of response options. Must be the same length as maxval-minval.
+#' @param namecol Vector containing string of response options. Must contain the colname as the first string.
 #' @param text String of the question wording in the survey
 #' @param tblnum Integer representing the table number in the series
 #' @param title String of the table title, usually the variable name in the dataframe
 #' @return A flextable object
+#' @examples
+#' mat <- as.data.frame(matrix(1:20, 5, 4, dimnames = list(NULL, LETTERS[1:4])))
+#' unitable(mat, mat$A, 1, 5, c("A", "one", "two", "three", "four", "five"), "What is the question?", 1, "Example table")
 #' @export
 unitable <- function(data, colval, minval, maxval, namecol, text, tblnum, title) {
   myvec <- vector("character", 1)

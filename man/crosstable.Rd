@@ -26,3 +26,8 @@ between two categorical (nominal or ordinal), numeric variables within a datafra
 There is an option to make the column names of the table reflect response options
 instead of the default, where the column names are the actual numeric values.
 }
+\examples{
+mat <- as.data.frame(matrix(1:20, 5, 4, dimnames = list(NULL, LETTERS[1:4])))
+crosstable(mat, "A", "B")
+crosstable(mat, "A", "B", x_names = c("one", "two", "three", "four", "five"), y_names = c("six", "seven", "eight", "nine", "ten"))
+}

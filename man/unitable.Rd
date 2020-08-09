@@ -15,7 +15,7 @@ unitable(data, colval, minval, maxval, namecol, text, tblnum, title)
 
 \item{maxval}{Integer representing the largest possible numeric value in the variable}
 
-\item{namecol}{Vector containing string of response options. Must be the same length as maxval-minval.}
+\item{namecol}{Vector containing string of response options. Must contain the colname as the first string.}
 
 \item{text}{String of the question wording in the survey}
 
@@ -29,4 +29,8 @@ A flextable object
 \description{
 This function generates a flextable for the distribution of responses to a
 single categorical (nominal or ordinal) numeric variable of a dataframe.
+}
+\examples{
+mat <- as.data.frame(matrix(1:20, 5, 4, dimnames = list(NULL, LETTERS[1:4])))
+unitable(mat, mat$A, 1, 5, c("A", "one", "two", "three", "four", "five"), "What is the question?", 1, "Example table")
 }
