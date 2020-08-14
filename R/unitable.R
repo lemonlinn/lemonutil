@@ -35,20 +35,20 @@ unitable <- function(data, colval, minval = FALSE, maxval = FALSE, namecol = FAL
     names(mydf) <- c("",namecol)
   }
 
-  ft <- flextable(mydf)
+  ft <- flextable::flextable(mydf)
   if (!isFALSE(title)){
-    ft <- add_header_row(ft, top = TRUE, values = title, colwidths = c(maxval+1))
+    ft <- flextable::add_header_row(ft, top = TRUE, values = title, colwidths = c(maxval+1))
   }
   #ft <- add_header_row(ft, top = TRUE, values = paste("Table #", toString(tblnum), sep = ""), colwidths = c(maxval+1))
-  ft <- align(ft, i = c(1:2), align = "center", part = "header")
+  ft <- flextable::align(ft, i = c(1:2), align = "center", part = "header")
   #ft <- width(ft, j = c(1), width = 2.5)
   #ft <- height(ft, i = c(1), height = 2, part = "body")
-  ft <- autofit(ft)
-  ft <- border_remove(ft)
-  ft <- border_inner_v(ft, border = fp_border(), part = "body")
-  ft <- border(ft, i = 3, j = c(1:maxval), border.right = fp_border(), part = "header")
-  ft <- hline_bottom(ft, border = fp_border())
-  ft <- hline(ft, i = 3, j = c(1:maxval+1), border = fp_border(), part = "header")
-  ft <- bold(ft, i = c(1:3), part = 'header')
+  ft <- flextable::autofit(ft)
+  ft <- flextable::border_remove(ft)
+  ft <- flextable::border_inner_v(ft, border = fp_border(), part = "body")
+  ft <- flextable::border(ft, i = 3, j = c(1:maxval), border.right = fp_border(), part = "header")
+  ft <- flextable::hline_bottom(ft, border = fp_border())
+  ft <- flextable::hline(ft, i = 3, j = c(1:maxval+1), border = fp_border(), part = "header")
+  ft <- flextable::bold(ft, i = c(1:3), part = 'header')
   return(ft)
 }
