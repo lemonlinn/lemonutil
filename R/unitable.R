@@ -38,11 +38,8 @@ unitable <- function(data, colval, minval = FALSE, maxval = FALSE, namecol = FAL
   ft <- flextable::flextable(mydf)
   if (!isFALSE(title)){
     ft <- flextable::add_header_row(ft, top = TRUE, values = title, colwidths = c(maxval+1))
+    ft <- flextable::align(ft, i = 1, align = "center", part = "header")
   }
-  #ft <- add_header_row(ft, top = TRUE, values = paste("Table #", toString(tblnum), sep = ""), colwidths = c(maxval+1))
-  ft <- flextable::align(ft, i = c(1:2), align = "center", part = "header")
-  #ft <- width(ft, j = c(1), width = 2.5)
-  #ft <- height(ft, i = c(1), height = 2, part = "body")
   ft <- flextable::autofit(ft)
   ft <- flextable::border_remove(ft)
   ft <- flextable::border_inner_v(ft, border = fp_border(), part = "body")
