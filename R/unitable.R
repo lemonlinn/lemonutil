@@ -35,17 +35,19 @@ unitable <- function(data, colval, minval = FALSE, maxval = FALSE, namecol = FAL
     names(mydf) <- c("",namecol)
   }
 
+  num_i <- 1
   ft <- flextable::flextable(mydf)
   if (!isFALSE(title)){
     ft <- flextable::add_header_row(ft, top = TRUE, values = title, colwidths = c(maxval+1))
     ft <- flextable::align(ft, i = 1, align = "center", part = "header")
+    num_i <- 2
   }
   ft <- flextable::autofit(ft)
   ft <- flextable::border_remove(ft)
   ft <- flextable::border_inner_v(ft, border = officer::fp_border(), part = "body")
-  ft <- flextable::border(ft, i = 3, j = c(1:maxval), border.right = officer::fp_border(), part = "header")
+  ft <- flextable::border(ft, i = num_i, j = c(1:maxval), border.right = officer::fp_border(), part = "header")
   ft <- flextable::hline_bottom(ft, border = officer::fp_border())
-  ft <- flextable::hline(ft, i = 3, j = c(1:maxval+1), border = officer::fp_border(), part = "header")
-  ft <- flextable::bold(ft, i = c(1:3), part = 'header')
+  ft <- flextable::hline(ft, i = num_i, j = c(1:maxval+1), border = officer::fp_border(), part = "header")
+  ft <- flextable::bold(ft, i = c(1:num_i), part = 'header')
   return(ft)
 }
