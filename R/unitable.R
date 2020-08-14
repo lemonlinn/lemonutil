@@ -42,10 +42,10 @@ unitable <- function(data, colval, minval = FALSE, maxval = FALSE, namecol = FAL
   }
   ft <- flextable::autofit(ft)
   ft <- flextable::border_remove(ft)
-  ft <- flextable::border_inner_v(ft, border = fp_border(), part = "body")
-  ft <- flextable::border(ft, i = 3, j = c(1:maxval), border.right = fp_border(), part = "header")
-  ft <- flextable::hline_bottom(ft, border = fp_border())
-  ft <- flextable::hline(ft, i = 3, j = c(1:maxval+1), border = fp_border(), part = "header")
+  ft <- flextable::border_inner_v(ft, border = officer::fp_border(), part = "body")
+  ft <- flextable::border(ft, i = 3, j = c(1:maxval), border.right = officer::fp_border(), part = "header")
+  ft <- flextable::hline_bottom(ft, border = officer::fp_border())
+  ft <- flextable::hline(ft, i = 3, j = c(1:maxval+1), border = officer::fp_border(), part = "header")
   ft <- flextable::bold(ft, i = c(1:3), part = 'header')
   return(ft)
 }
