@@ -15,13 +15,13 @@
 #' mat <- as.data.frame(matrix(1:20, 5, 4, dimnames = list(NULL, LETTERS[1:4])))
 #' unitable(mat, mat$A, 1, 5, c("A", "one", "two", "three", "four", "five"), "What is the question?", 1, "Example table")
 #' @export
-unitable <- function(data, colval, minval = NA, maxval = NA, namecol = NA, text = " ", title = NA) {
+unitable <- function(data, colval, minval = FALSE, maxval = FALSE, namecol = FALSE, text = " ", title = FALSE) {
   myvec <- vector("character", 1)
   myprop <- vector("character", 1)
-  if (minval == NA){
+  if (isFALSE(minval)){
     minval = min(colval)
   }
-  if (maxval == NA){
+  if (isFALSE(maxval)){
     maxval = max(colval)
   }
   for (val1 in minval:maxval){
@@ -31,12 +31,12 @@ unitable <- function(data, colval, minval = NA, maxval = NA, namecol = NA, text 
   myprop <- append(myprop, text, after = 0)
   myvec <- append(myvec, paste("(n=", toString(length(colval)), ")", sep = ""), after = 0)
   mydf <- data.frame(t(data.frame(myprop, myvec)))
-  if (namecol != NA){
+  if (!isFALSE(namecol)){
     names(mydf) <- c("",namecol)
   }
 
   ft <- flextable(mydf)
-  if (title != NA){
+  if (!isFALSE(title)){
     ft <- add_header_row(ft, top = TRUE, values = title, colwidths = c(maxval+1))
   }
   #ft <- add_header_row(ft, top = TRUE, values = paste("Table #", toString(tblnum), sep = ""), colwidths = c(maxval+1))

@@ -7,11 +7,11 @@
 unitable(
   data,
   colval,
-  minval = NA,
-  maxval = NA,
-  namecol = NA,
+  minval = FALSE,
+  maxval = FALSE,
+  namecol = FALSE,
   text = " ",
-  title = NA
+  title = FALSE
 )
 }
 \arguments{
