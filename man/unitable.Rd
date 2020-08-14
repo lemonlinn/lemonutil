@@ -4,24 +4,30 @@
 \alias{unitable}
 \title{Generate a table for a single variable}
 \usage{
-unitable(data, colval, minval, maxval, namecol, text, tblnum, title)
+unitable(
+  data,
+  colval,
+  minval = NA,
+  maxval = NA,
+  namecol = NA,
+  text = " ",
+  title = NA
+)
 }
 \arguments{
 \item{data}{Object holding the dataframe}
 
 \item{colval}{Call to the variable in the dataframe formatted as df$colname}
 
-\item{minval}{Integer representing the smallest possible numeric value in the variable}
+\item{minval}{Optional. Integer representing the smallest possible numeric value in the variable}
 
-\item{maxval}{Integer representing the largest possible numeric value in the variable}
+\item{maxval}{Optional. Integer representing the largest possible numeric value in the variable}
 
-\item{namecol}{Vector containing string of response options. Must contain the colname as the first string.}
+\item{namecol}{Optional. Vector containing string of response options.}
 
-\item{text}{String of the question wording in the survey}
+\item{text}{Optional. String of the question wording in the survey}
 
-\item{tblnum}{Integer representing the table number in the series}
-
-\item{title}{String of the table title, usually the variable name in the dataframe}
+\item{title}{Optional. String of the table title, usually the variable name in the dataframe}
 }
 \value{
 A flextable object
