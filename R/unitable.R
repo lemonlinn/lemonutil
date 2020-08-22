@@ -17,7 +17,7 @@
 #' @export
 unitable <- function(data, colval, minval = FALSE, maxval = FALSE, namecol = FALSE, text = " ", title = FALSE) {
   if (isFALSE(minval)){
-    minval = min(colval)
+    minval = min(na.omit(colval))
   }
   if (isFALSE(maxval)){
     maxval = max(colval)

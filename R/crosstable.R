@@ -45,7 +45,7 @@ crosstable <- function(data, x, y, x_names = FALSE, y_names = FALSE){
   ft <- flextable::align(ft, i = 1, j = maxval, align = "right", part = "footer")
 
   #ft <- border_remove(ft)
-  ft <- bold(ft, part = "header", i = 1)
+  ft <- flextable::bold(ft, part = "header", i = 1)
   #ft <- hline_bottom(ft, border = fp_border())
   #ft <- hline(ft, i = 1, border = fp_border(), part = "header")
   return(ft)
