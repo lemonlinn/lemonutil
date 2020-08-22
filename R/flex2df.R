@@ -6,7 +6,6 @@
 #' @param flex A flextable object
 #' @param tbl_type String referring to type of table. Accepts "unitable" or "crosstable".
 #' @return A data.frame object
-#'
 #' @export
 flex2df <- function(flex, tbl_type){
   if (tbl_type == "unitable"){
@@ -25,6 +24,17 @@ flex2df <- function(flex, tbl_type){
     tmpdf[2] <- sapply(tmpdf[2], FUN = as.numeric)
     return(tmpdf)
   } else if (tdl_type == "crosstable"){
+    ctab_nrow <- ctab$body$content$content$nrow
+    ctab_ncol <- ctab$body$content$content$ncol
+    ctab_colnames <- ctab$header$dataset[nrow(ctab$header$dataset),]
 
+    tmpdf <- data.frame(matrix(0, ncol = ctab_ncol, nrow = ctab_nrow))
+    for (i in 1:ctab_ncol){
+      tmpdf[i] <- c(as.character(unlist(ctab$body$dataset[i])))
+    }
+    colnames(tmpdf) <- ctab_colnames
+    row.names(tmpdf) <- tmpdf$x
+    tmpdf$x <- NULL
+    return(tmpdf)
   }
 }
