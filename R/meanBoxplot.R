@@ -7,7 +7,7 @@
 #' the output of this function can be treated as the root for further ggplot2 additions (ex. labs,
 #' geom_jitter).
 #'
-#'@param data Variable containing the data.frame
+#' @param data Variable containing the data.frame
 #' @param x_var A categorical variable for the x axis
 #' @param y_var A continuous or semi-continuous variable for the y axis
 #' @return A ggplot2 graph object
@@ -16,7 +16,7 @@ meanBoxplot <- function(data, x_var, y_var) {
   x <- c(eval(substitute(x_var), data))
   y <- c(eval(substitute(y_var), data))
   df <- data.frame("x_var" = x, "y_var" = y)
-  g <- ggplot(data, aes(factor(substitute(x_var)), substitute(y_var))) +
+  g <- ggplot(df, aes(factor(x_var), y_var)) +
     stat_summary(fun.data=MinMeanSEMMax, geom="boxplot")
   return(g)
 }
