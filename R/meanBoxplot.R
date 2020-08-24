@@ -10,13 +10,13 @@
 #' @param x_var A categorical variable for the x axis
 #' @param y_var A continuous or semi-continuous variable for the y axis
 #' @return A ggplot2 graph object
-#' @export
 MinMeanSEMMax <- function(x) {
   v <- c(min(x), mean(x) - sd(x)/sqrt(length(x)), mean(x), mean(x) + sd(x)/sqrt(length(x)), max(x))
   names(v) <- c("ymin", "lower", "middle", "upper", "ymax")
   v
 }
 
+#'@export
 meanBoxplot <- function(x_var, y_var) {
   ggplot(d, aes(factor(x_var), y_var)) +
     stat_summary(fun.data=MinMeanSEMMax, geom="boxplot") +
