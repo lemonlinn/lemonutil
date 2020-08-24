@@ -33,7 +33,7 @@ flex2df <- function(flex, tbl_type){
     for (i in 1:ctab_nrow){
       tmpdf[i,] <- c(as.character(unlist(flex$body$dataset[i,])))
       tmpdf[i,] <- sapply(tmpdf[i,], FUN = as.numeric)
-      tmpdf[i,] <- tmpdf[,i][,1]
+      #tmpdf[i,] <- tmpdf[,i][,1]
     }
     colnames(tmpdf) <- ctab_colnames
     row.names(tmpdf) <- flex$body$dataset[1]
