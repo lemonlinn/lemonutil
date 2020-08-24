@@ -24,7 +24,7 @@ flex2df <- function(flex, tbl_type){
     tmpdf[2] <- sapply(tmpdf[2], FUN = as.numeric)
     tmpdf[2] <- tmpdf$total[,1]
     return(tmpdf)
-  } else if (tdl_type == "crosstable"){
+  } else if (tbl_type == "crosstable"){
     ctab_nrow <- ctab$body$content$content$nrow
     ctab_ncol <- ctab$body$content$content$ncol
     ctab_colnames <- ctab$header$dataset[nrow(ctab$header$dataset),]
