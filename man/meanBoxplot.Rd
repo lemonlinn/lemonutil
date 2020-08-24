@@ -4,9 +4,11 @@
 \alias{meanBoxplot}
 \title{Generate a ggplot2 box and whisker plot using mean and standard deviations}
 \usage{
-meanBoxplot(x_var, y_var)
+meanBoxplot(data, x_var, y_var)
 }
 \arguments{
+\item{data}{Variable containing the data.frame}
+
 \item{x_var}{A categorical variable for the x axis}
 
 \item{y_var}{A continuous or semi-continuous variable for the y axis}
