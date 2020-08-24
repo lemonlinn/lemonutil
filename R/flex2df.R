@@ -11,7 +11,7 @@ flex2df <- function(flex, tbl_type){
   if (tbl_type == "unitable"){
     tmp_perc <- c(as.character(unlist(flex$body$dataset[1,])))
     tmp_count <- c(as.character(unlist(flex$body$dataset[2,])))
-    tmpdf <- data.frame("percentage"=tmp_perc, "count"=tmp_count)
+    tmpdf <- data.frame("percentage"=tmp_perc, "total"=tmp_count)
     tmpdf <- tmpdf[2:nrow(tmpdf),]
     rownames(tmpdf) <- NULL
 

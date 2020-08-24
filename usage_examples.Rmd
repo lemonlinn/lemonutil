@@ -1,0 +1,56 @@
+---
+title: "lemonutil_examples"
+author: "Lemon Reimer"
+date: "8/24/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r libs}
+# devtools::install_github("lemonlinn/lemonutil", upgrade = "never") to download/update
+library(lemonutil)
+```
+
+```{r df}
+# making example dataset
+cat_var <- c(1,2,1,1,2,2,1,1,1,2,2,2)
+con_var <- c(1,5,3,4,2,5,4,3,1,1,2,5)
+d <- data.frame("cat_var"=cat_var, "con_var"=con_var)
+```
+
+# unitable
+
+```{r basic unitable}
+lemonutil::unitable(d, d$cat_var)
+lemonutil::unitable(d, d$con_var)
+```
+
+```{r unitable with options}
+lemonutil::unitable(d, d$con_var, namecol = c("disagree", "kinda disagree", "neither", "kinda agree", "agree"), text = "Do you agree or disagree?", title = "Table distribution of con_var")
+```
+
+```{r unitable with min/max option}
+# If your data doesn't contain available response options because nobody chose them, but you still want that option shown in the table, use the optional minval and maxval options.
+# For example, the question had 7 categories to choose from, but 6 and 7 were never chosen:
+
+lemonutil::unitable(d, d$con_var, minval = 1, maxval = 7)
+
+```
+
+# crosstable
+
+```{r basic crosstable}
+lemonutil::crosstable(d, "con_var", "cat_var")
+```
+
+```{r crosstable with options}
+lemonutil::crosstable(d, "con_var", "cat_var", x_names = c("disagree", "kinda disagree", "neither", "kinda agree", "agree"), y_names = c("yes", "no"))
+```
+
+
+
+
+
