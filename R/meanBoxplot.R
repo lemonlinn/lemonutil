@@ -13,12 +13,12 @@
 #' @return A ggplot2 graph object
 #'@export
 meanBoxplot <- function(data, x_var, y_var) {
-  x <- eval(substitute(x_var), data)
-  y <- eval(substitute(y_var), data)
-  return(x)
-  #ggplot(data, aes(factor(substitute(x_var)), substitute(y_var))) +
-  #  stat_summary(fun.data=MinMeanSEMMax, geom="boxplot") +
-  #  ggtitle("Boxplot: Min, Mean-1SEM, Mean, Mean+1SEM, Max")
+  x <- c(eval(substitute(x_var), data))
+  y <- c(eval(substitute(y_var), data))
+  df <- data.frame("x_var" = x, "y_var" = y)
+  g <- ggplot(data, aes(factor(substitute(x_var)), substitute(y_var))) +
+    stat_summary(fun.data=MinMeanSEMMax, geom="boxplot")
+  return(g)
 }
 
 MinMeanSEMMax <- function(x) {
