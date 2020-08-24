@@ -22,6 +22,7 @@ flex2df <- function(flex, tbl_type){
     tmpdf[2] <- sapply(tmpdf[2], FUN = sub, pattern="\\(n=", replacement="")
     tmpdf[2] <- sapply(tmpdf[2], FUN = sub, pattern="\\)", replacement="")
     tmpdf[2] <- sapply(tmpdf[2], FUN = as.numeric)
+    tmpdf[2] <- tmpdf$total[,1]
     return(tmpdf)
   } else if (tdl_type == "crosstable"){
     ctab_nrow <- ctab$body$content$content$nrow
