@@ -17,4 +17,5 @@ Imports:
   flextable (>= 0.5.10),
   janitor (>= 2.0.1),
   officer (>= 0.3.11),
-  dplyr (>= 0.8.5)
+  dplyr (>= 0.8.5),
+  ggplot2 (>= 3.3.1)
