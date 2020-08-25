@@ -25,11 +25,13 @@ d <- data.frame("cat_var"=cat_var, "con_var"=con_var)
 
 ```{r basic unitable}
 lemonutil::unitable(d, d$cat_var)
-lemonutil::unitable(d, d$con_var)
+uni_tbl1 = lemonutil::unitable(d, d$con_var)
+uni_tbl1
 ```
 
 ```{r unitable with options}
-lemonutil::unitable(d, d$con_var, namecol = c("disagree", "kinda disagree", "neither", "kinda agree", "agree"), text = "Do you agree or disagree?", title = "Table distribution of con_var")
+uni_tbl2 = lemonutil::unitable(d, d$con_var, namecol = c("disagree", "kinda disagree", "neither", "kinda agree", "agree"), text = "Do you agree or disagree?", title = "Table distribution of con_var")
+uni_tbl2
 ```
 
 ```{r unitable with min/max option}
@@ -43,14 +45,50 @@ lemonutil::unitable(d, d$con_var, minval = 1, maxval = 7)
 # crosstable
 
 ```{r basic crosstable}
-lemonutil::crosstable(d, "con_var", "cat_var")
+cross_tbl1 = lemonutil::crosstable(d, "con_var", "cat_var")
+cross_tbl1
 ```
 
 ```{r crosstable with options}
-lemonutil::crosstable(d, "con_var", "cat_var", x_names = c("disagree", "kinda disagree", "neither", "kinda agree", "agree"), y_names = c("yes", "no"))
+cross_tbl2 = lemonutil::crosstable(d, "con_var", "cat_var", x_names = c("disagree", "kinda disagree", "neither", "kinda agree", "agree"), y_names = c("yes", "no"))
+cross_tbl2
 ```
 
+# flex2df
 
+```{r basic unitbl df}
+uni_df1 = lemonutil::flex2df(uni_tbl1, tbl_type = "unitable")
+head(uni_df1)
+```
 
+```{r options unitbl df}
+uni_df2 = lemonutil::flex2df(uni_tbl2, tbl_type = "unitable")
+uni_df2
+```
+
+```{r basic crosstbl df}
+cross_df1 = lemonutil::flex2df(cross_tbl1, tbl_type = "crosstable")
+cross_df1
+```
+
+```{r options crosstbl df}
+cross_df2 = lemonutil::flex2df(cross_tbl2, tbl_type = "crosstable")
+head(cross_df2)
+```
+
+# meanBoxplot
+
+```{r basic boxplot}
+g = lemonutil::meanBoxplot(d, cat_var, con_var)
+g
+```
+
+```{r adding to boxplot}
+library(ggplot2)
+
+g + geom_jitter(aes(color="red"), alpha=0.5, show.legend = F, width = 0.1) + 
+  labs(x="Binary Variable", y="Ordinal/Continuous Variable") + 
+  scale_x_discrete(labels=c("1" = "Yes", "2" = "No"))
+```
 
 
