@@ -37,7 +37,7 @@ flex2df <- function(flex, tbl_type){
     }
     colnames(tmpdf) <- ctab_colnames
     row.names(tmpdf) <- c(as.character(unlist(flex$body$dataset[1])))
-    tmpdf$X1 <- NULL
+    tmpdf[1] <- NULL
     return(tmpdf)
   }
 }
