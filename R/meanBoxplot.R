@@ -16,8 +16,8 @@ meanBoxplot <- function(data, x_var, y_var) {
   x <- c(eval(substitute(x_var), data))
   y <- c(eval(substitute(y_var), data))
   df <- data.frame("x_var" = x, "y_var" = y)
-  g <- ggplot2::ggplot(df, aes(factor(x_var), y_var)) +
-    stat_summary(fun.data=MinMeanSEMMax, geom="boxplot")
+  g <- ggplot2::ggplot(df, ggplot2::aes(factor(x_var), y_var)) +
+    ggplot2::stat_summary(fun.data=MinMeanSEMMax, geom="boxplot")
   return(g)
 }
 
