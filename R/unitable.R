@@ -20,7 +20,7 @@ unitable <- function(data, colval, minval = FALSE, maxval = FALSE, namecol = FAL
     minval = min(na.omit(colval))
   }
   if (isFALSE(maxval)){
-    maxval = max(colval)
+    maxval = max(na.omit(colval))
   }
   myvec <- vector("character", length = length(minval:maxval))
   myprop <- vector("character", length = length(minval:maxval))
