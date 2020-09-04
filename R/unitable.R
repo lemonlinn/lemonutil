@@ -17,6 +17,7 @@
 #' @export
 unitable <- function(data, colval, minval = FALSE, maxval = FALSE, namecol = FALSE, text = " ", title = FALSE) {
   if (isFALSE(minval)){
+    colval = unlist(data[colval])
     minval = min(na.omit(colval))
   }
   if (isFALSE(maxval)){
@@ -55,3 +56,44 @@ unitable <- function(data, colval, minval = FALSE, maxval = FALSE, namecol = FAL
   ft <- flextable::bold(ft, i = c(1:num_i), part = 'header')
   return(ft)
 }
+
+# unitable <- function(data, colval, minval = FALSE, maxval = FALSE, namecol = FALSE, text = " ", title = FALSE) {
+#   if (isFALSE(minval)){
+#     minval = min(na.omit(colval))
+#   }
+#   if (isFALSE(maxval)){
+#     maxval = max(na.omit(colval))
+#   }
+#   myvec <- vector("character", length = length(minval:maxval))
+#   myprop <- vector("character", length = length(minval:maxval))
+#   myvals <- c(minval:maxval)
+#   for (val1 in 1:length(myvals)){
+#     myvec[val1] <- paste("(n=",toString(nrow(data[(colval == myvals[val1]), ])),")", sep = "")
+#     myprop[val1] <- sprintf("%0.1f%%",(nrow(data[(colval == myvals[val1]), ])/length(colval))*100)
+#   }
+#   myprop <- append(myprop, text, after = 0)
+#   myvec <- append(myvec, paste("(N=", toString(length(colval)), ")", sep = ""), after = 0)
+#   mydf <- data.frame(t(data.frame(myprop, myvec)))
+#
+#   if (!isFALSE(namecol)){
+#     names(mydf) <- c(" ", namecol)
+#   } else{
+#     names(mydf) <- c(" ", minval:maxval)
+#   }
+#
+#   num_i <- 1
+#   ft <- flextable::flextable(mydf)
+#   if (!isFALSE(title)){
+#     ft <- flextable::add_header_row(ft, top = TRUE, values = title, colwidths = c(length(myvals)+1))
+#     ft <- flextable::align(ft, i = 1, align = "center", part = "header")
+#     num_i <- 2
+#   }
+#   ft <- flextable::autofit(ft)
+#   ft <- flextable::border_remove(ft)
+#   ft <- flextable::border_inner_v(ft, border = officer::fp_border(), part = "body")
+#   ft <- flextable::border(ft, i = num_i, j = c(1:length(myvals)), border.right = officer::fp_border(), part = "header")
+#   ft <- flextable::hline_bottom(ft, border = officer::fp_border())
+#   ft <- flextable::hline(ft, i = num_i, j = c(1:length(myvals)+1), border = officer::fp_border(), part = "header")
+#   ft <- flextable::bold(ft, i = c(1:num_i), part = 'header')
+#   return(ft)
+# }
