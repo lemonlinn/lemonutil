@@ -11,14 +11,14 @@
 #' @param y String of the second variable name
 #' @param x_names Vector of response options. Default value is FALSE.
 #' @param y_names Vector of response options. Default value is FALSE.
-#' @param percents String representing what percentages to calculate. Accepts any of c("TRC", "RC", "TC", "TR", "C", "R", "T"). Default is "TRC".
+#' @param percents String representing what percentages to calculate. Accepts any of c("TRC", "RC", "TC", "TR", "C", "R", "T", "N"). Default is "TRC".
 #' @param row_t Boolean determining if row totals should be included. Default value is TRUE.
 #' @param col_t Boolean determining if column totals should be included. Default value is TRUE.
 #' @return A flextable object
 #' @examples
 #' mat <- as.data.frame(matrix(1:20, 5, 4, dimnames = list(NULL, LETTERS[1:4])))
-#' crosstable(mat, "A", "B")
-#' crosstable(mat, "A", "B", x_names = c("one", "two", "three", "four", "five"), y_names = c("six", "seven", "eight", "nine", "ten"))
+#' crosstable_ext(mat, "A", "B")
+#' crosstable_ext(mat, "A", "B", x_names = c("one", "two", "three", "four", "five"), y_names = c("six", "seven", "eight", "nine", "ten"))
 #' @export
 crosstable_ext <- function(data, x, y, x_names = FALSE, y_names = FALSE, percents = "TRC", row_t = TRUE, col_t = TRUE){
   tab = xtabs(formula = ~unlist(data[y])+unlist(data[x]))

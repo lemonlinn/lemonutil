@@ -26,7 +26,7 @@ crosstable_ext(
 
 \item{y_names}{Vector of response options. Default value is FALSE.}
 
-\item{percents}{String representing what percentages to calculate. Accepts any of c("TRC", "RC", "TC", "TR", "C", "R", "T"). Default is "TRC".}
+\item{percents}{String representing what percentages to calculate. Accepts any of c("TRC", "RC", "TC", "TR", "C", "R", "T", "N"). Default is "TRC".}
 
 \item{row_t}{Boolean determining if row totals should be included. Default value is TRUE.}
 
@@ -44,6 +44,6 @@ instead of the default, where the column names are the actual numeric values.
 }
 \examples{
 mat <- as.data.frame(matrix(1:20, 5, 4, dimnames = list(NULL, LETTERS[1:4])))
-crosstable(mat, "A", "B")
-crosstable(mat, "A", "B", x_names = c("one", "two", "three", "four", "five"), y_names = c("six", "seven", "eight", "nine", "ten"))
+crosstable_ext(mat, "A", "B")
+crosstable_ext(mat, "A", "B", x_names = c("one", "two", "three", "four", "five"), y_names = c("six", "seven", "eight", "nine", "ten"))
 }
