@@ -27,7 +27,7 @@ unitable <- function(data, colval, minval = FALSE, maxval = FALSE, namecol = FAL
   myprop <- vector("character", length = length(minval:maxval))
   myvals <- c(minval:maxval)
   for (val1 in 1:length(myvals)){
-    tmp <- nrow(na.omit(data[colval])[na.omit(data[colval]) == myvals[i], ])
+    tmp <- nrow(na.omit(data[colval])[na.omit(data[colval]) == myvals[val1], ])
     myvec[val1] <- paste("(n=",toString(tmp),")", sep = "")
     myprop[val1] <- sprintf("%0.1f%%",(tmp/nrow(na.omit(data[colval])))*100)
   }
