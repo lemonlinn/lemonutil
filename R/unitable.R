@@ -13,7 +13,7 @@
 #' @return A flextable object
 #' @examples
 #' mat <- as.data.frame(matrix(1:20, 5, 4, dimnames = list(NULL, LETTERS[1:4])))
-#' unitable(mat, mat$A, 1, 5, c("A", "one", "two", "three", "four", "five"), "What is the question?", "Example table")
+#' unitable(mat, "A", 1, 5, c("one", "two", "three", "four", "five"), "What is the question?", "Example table")
 #' @export
 unitable <- function(data, colval, minval = FALSE, maxval = FALSE, namecol = FALSE, text = " ", title = FALSE) {
   collist = unlist(na.omit(data[colval]))
