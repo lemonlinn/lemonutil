@@ -16,12 +16,12 @@
 #' unitable(mat, mat$A, 1, 5, c("A", "one", "two", "three", "four", "five"), "What is the question?", "Example table")
 #' @export
 unitable <- function(data, colval, minval = FALSE, maxval = FALSE, namecol = FALSE, text = " ", title = FALSE) {
+  collist = unlist(na.omit(data[colval]))
   if (isFALSE(minval)){
-    colval = unlist(data[colval])
-    minval = min(na.omit(colval))
+    minval = min(collist)
   }
   if (isFALSE(maxval)){
-    maxval = max(na.omit(colval))
+    maxval = max(collist)
   }
   myvec <- vector("character", length = length(minval:maxval))
   myprop <- vector("character", length = length(minval:maxval))
@@ -29,10 +29,10 @@ unitable <- function(data, colval, minval = FALSE, maxval = FALSE, namecol = FAL
   for (val1 in 1:length(myvals)){
     tmp <- nrow(na.omit(data[colval])[na.omit(data[colval]) == myvals[i], ])
     myvec[val1] <- paste("(n=",toString(tmp),")", sep = "")
-    myprop[val1] <- sprintf("%0.1f%%",(tmp/length(na.omit(data[colval])))*100)
+    myprop[val1] <- sprintf("%0.1f%%",(tmp/nrow(na.omit(data[colval])))*100)
   }
   myprop <- append(myprop, text, after = 0)
-  myvec <- append(myvec, paste("(N=", toString(length(na.omit(data[colval]))), ")", sep = ""), after = 0)
+  myvec <- append(myvec, paste("(N=", toString(nrow(na.omit(data[colval]))), ")", sep = ""), after = 0)
   mydf <- data.frame(t(data.frame(myprop, myvec)))
 
   if (!isFALSE(namecol)){
