@@ -27,11 +27,12 @@ unitable <- function(data, colval, minval = FALSE, maxval = FALSE, namecol = FAL
   myprop <- vector("character", length = length(minval:maxval))
   myvals <- c(minval:maxval)
   for (val1 in 1:length(myvals)){
-    myvec[val1] <- paste("(n=",toString(nrow(data[(colval == myvals[val1]), ])),")", sep = "")
-    myprop[val1] <- sprintf("%0.1f%%",(nrow(data[(colval == myvals[val1]), ])/length(colval))*100)
+    tmp <- nrow(na.omit(data[colval])[na.omit(data[colval]) == myvals[i], ])
+    myvec[val1] <- paste("(n=",toString(tmp),")", sep = "")
+    myprop[val1] <- sprintf("%0.1f%%",(tmp/length(na.omit(data[colval])))*100)
   }
   myprop <- append(myprop, text, after = 0)
-  myvec <- append(myvec, paste("(N=", toString(length(colval)), ")", sep = ""), after = 0)
+  myvec <- append(myvec, paste("(N=", toString(length(na.omit(data[colval]))), ")", sep = ""), after = 0)
   mydf <- data.frame(t(data.frame(myprop, myvec)))
 
   if (!isFALSE(namecol)){
