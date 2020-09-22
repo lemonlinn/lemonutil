@@ -26,4 +26,4 @@
  
  * `crosstable_ext`: Generates a flextable for a cross tabulation, including the chi-square statistic and p-value
  * `unitable`: Generates a flextable for the distribution of a single variable
- * `flex2df`: Converts a flextable produced by either lemonutil::unitable or lemonutil::crosstable into a data.frame object
+ * `flex2df`: Converts a flextable produced by either `lemonutil::unitable` or `lemonutil::crosstable` into a data.frame object
